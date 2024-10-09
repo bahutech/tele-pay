@@ -1,4 +1,3 @@
-const https = require("http");
 const config = require("../config/config");
 var request = require("request");
 
@@ -18,15 +17,9 @@ function applyFabricToken() {
         appSecret: config.appSecret,
       }),
     };
-    console.log(options);
     request(options, function (error, response) {
       if (error) throw new Error(error);
-      // console.log("***********");
-      console.log("BODY", response.body);
-      // console.log(typeof response.body);
       let result = JSON.parse(response.body);
-      // console.log(result);
-      // console.log("*****************");
       resolve(result);
     });
   });
