@@ -27,6 +27,7 @@ app.post("/apply/h5token", function (req, res) {
 });
 
 app.post("/create/order", function (req, res) {
+  console.log("server Receive Order :" + req);
   createOrder.createOrder(req, res);
 });
 
