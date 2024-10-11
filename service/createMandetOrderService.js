@@ -1,52 +1,59 @@
 const applyFabricToken = require("./applyFabricTokenService");
 const tools = require("../utils/tools");
-const axios = require("axios");
 const config = require("../config/config");
 const https = require("http");
 var request = require("request");
 
-exports.createOrder = async (req, res) => {
+// Apply Creste otrder
+// Apply Creste otrder
+exports.createMandetOrder = async (req, res) => {
   let title = req.body.title;
   let amount = req.body.amount;
+  let ContractNo = req.body.ContractNo;
   let applyFabricTokenResult = await applyFabricToken();
   let fabricToken = applyFabricTokenResult.token;
   console.log("fabricToken =", fabricToken);
   let createOrderResult = await exports.requestCreateOrder(
     fabricToken,
     title,
-    amount
+    amount,
+    ContractNo
   );
   console.log(createOrderResult);
   let prepayId = createOrderResult.biz_content.prepay_id;
   let rawRequest = createRawRequest(prepayId);
-  console.log("RAW_REQ: ", rawRequest);
+  console.log("RAW_REQ_Ebsa: ", rawRequest);
   res.send(rawRequest);
-  return rawRequest;
 };
 
-exports.requestCreateOrder = async (fabricToken, title, amount) => {
-  try {
-    const reqObject = createRequestObject(title, amount);
+exports.requestCreateOrder = async (fabricToken, title, amount, ContractNo) => {
+  return new Promise((resolve) => {
+    let reqObject = createRequestObject(title, amount);
+
     console.log(reqObject);
 
-    const response = await axios.post(
-      `${config.baseUrl}/payment/v1/merchant/preOrder`,
-      reqObject,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "X-APP-Key": config.fabricAppId,
-          Authorization: fabricToken,
-        },
-      }
-    );
+    var options = {
+      method: "POST",
+      url: config.baseUrl + "/payment/v1/merchant/preOrder",
+      headers: {
+        "Content-Type": "application/json",
+        "X-APP-Key": config.fabricAppId,
+        Authorization: fabricToken,
+      },
+      rejectUnauthorized: false, //add when working with https sites
+      requestCert: false, //add when working with https sites
+      agent: false, //add when working with https sites
+      body: JSON.stringify(reqObject),
+    };
 
-    // Assuming your response is a JSON object, no need to parse it
-    return response.data;
-  } catch (error) {
-    console.error("Error while requesting create order:", error.message);
-    throw error; // Propagate the error for handling at a higher level
-  }
+    request(options, function (error, response) {
+      console.log(error);
+      if (error) throw new Error(error);
+      console.log(response.body);
+      let result = JSON.parse(response.body);
+      resolve(result);
+    });
+  });
 };
 
 function createRequestObject(title, amount) {
@@ -63,13 +70,18 @@ function createRequestObject(title, amount) {
     appid: config.merchantAppId,
     merch_code: config.merchantCode,
     merch_order_id: createMerchantOrderId(),
-    title: "Game1",
-    total_amount: "150",
+    title: title,
+    total_amount: amount,
     trans_currency: "ETB",
     timeout_express: "120m",
-    payee_identifier: config.merchantCode,
+    payee_identifier: "220311",
     payee_identifier_type: "04",
     payee_type: "5000",
+    mandate_data: {
+      mctContractNo: ContractNo,
+      mandateTemplateId: "103001",
+      executeTime: "2023-08-04"
+    },
     redirect_url: "https://216.24.57.253/api/v1/notify",
   };
   req.biz_content = biz;
