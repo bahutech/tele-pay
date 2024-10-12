@@ -94,7 +94,7 @@ function createRequestObject(title, amount) {
   };
   let biz = {
     // notify_url: "https://node-api-muxu.onrender.com/api/v1/notify",
-    notify_url: "https://aliexpress.com.et/success",
+    notify_url: "https://tele-pay.onrender.com/api/v1/notify",
     trade_type: "InApp",
     appid: config.merchantAppId,
     merch_code: config.merchantCode,
@@ -106,7 +106,7 @@ function createRequestObject(title, amount) {
     payee_identifier: config.merchantCode,
     payee_identifier_type: "04",
     payee_type: "5000",
-    redirect_url: "https://tele-pay.onrender.com/api/v1/notify",
+    redirect_url: "https://aliexpress.com.et/success",
   };
   req.biz_content = biz;
   req.sign = tools.signRequestObject(req);
