@@ -1,7 +1,10 @@
 // Set your own secrates here!
 // TestBed
 module.exports = {
-  baseUrl: "https://196.188.120.3:38443/apiaccess/payment/gateway",
+  baseUrl: "https://developerportal.ethiotelebirr.et:38443/apiaccess/payment/gateway",
+  //baseUrl: "https://196.188.120.3:38443/apiaccess/payment/gateway",
+  webBaseUrl:
+    "https://developerportal.ethiotelebirr.et:38443/payment/web/paygate?",
   fabricAppId: "c4182ef8-9249-458a-985e-06d191f4d505",
   appSecret: "fad0f06383c6297f545876694b974599",
   merchantAppId: "1294978220160002",
