@@ -1,4 +1,4 @@
- const axios = require("axios");
+const axios = require("axios");
 const config = require("../config/config");
 
 // Apply fabric token
@@ -21,11 +21,11 @@ async function applyFabricToken() {
     return response.data;
   } catch (error) {
     console.error("Error while applying fabric token:", error.message);
-    return error.message; // Propagate the error for handling at a higher level
+    throw error; // Propagate the error for handling at a higher level
   }
 }
 
-module.exports = applyFabricToken;/* */
+module.exports = applyFabricToken;
 
 // const https = require("http");
 // const config = require("../config/config");
