@@ -9,7 +9,7 @@ function applyFabricToken() {
       url: "196.188.120.3:38443" + "/payment/v1/token",
       headers: {
         "Content-Type": "application/json",
-        "X-APP-Key": config.fabricAppId,
+        "X-APP-Key": "c4182ef8-9249-458a-985e-06d191f4d505",
       },
       rejectUnauthorized: false, //add when working with https sites
       requestCert: false, //add when working with https sites
