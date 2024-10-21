@@ -3,6 +3,7 @@ const config = require("../config/config");
 
 // Apply fabric token
 async function applyFabricToken() {
+  console.log("AM AT applyFabricToken");
   try {
     const response = await axios.post(
       `${config.baseUrl}/payment/v1/token`,
