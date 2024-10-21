@@ -5,24 +5,21 @@ function applyFabricToken() {
   console.log("AM AT applyFabricToken");
   return new Promise((resolve, reject) => {
     var options = {
-      method: "POST",
-      url: "196.188.120.3:38443" + "/payment/v1/token",
-      headers: {
-        "Content-Type": "application/json",
-        "X-APP-Key": "c4182ef8-9249-458a-985e-06d191f4d505",
-      },
-      rejectUnauthorized: false, //add when working with https sites
-      requestCert: true, //add when working with https sites
-      agent: false, //add when working with https sites
-      body: JSON.stringify({
-        appSecret: config.appSecret,
-      }),
-    };
-    request(options, function (error, response) {
-      if (error) throw new Error(error);
-      let result = JSON.parse(response.body);
-      resolve(result);
-    });
+  'method': 'POST',
+  'url': 'https://196.188.120.3:38443/apiaccess/payment/gateway/payment/v1/token',
+  'headers': {
+    'X-APP-Key': 'c4182ef8-9249-458a-985e-06d191f4d505',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    "appSecret": "fad0f06383c6297f545876694b974599"
+  })
+
+};
+request(options, function (error, response) {
+  if (error) throw new Error(error);
+  console.log(response.body);
+});
   });
 }
 
