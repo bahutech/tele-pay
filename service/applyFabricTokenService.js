@@ -11,7 +11,7 @@ function applyFabricToken() {
     'X-APP-Key': 'c4182ef8-9249-458a-985e-06d191f4d505',
     'Content-Type': 'application/json'
   },
-  'mode': 'cors',
+  'mode': 'no-cors',
   body: JSON.stringify({
     "appSecret": "fad0f06383c6297f545876694b974599"
   })
@@ -23,10 +23,10 @@ request(options, function (error, response) {
     console.log("***********");
        //console.log("BODY", response.body);
       // console.log(typeof response.body);
-     let result = JSON.parse(response.body);
+     //let result = JSON.parse(response.body);
       //console.log(result);
-      console.log("*****************");
-      resolve(result);
+      //console.log("*****************");
+      resolve(response);
 });
   });
 }
