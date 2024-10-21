@@ -6,6 +6,7 @@ const https = require("http");
 var request = require("request");
 
 exports.createOrder = async (req, res) => {
+  console.log("AM AT createOrder");
   let title = req.body.title;
   let amount = req.body.amount;
   let applyFabricTokenResult = await applyFabricToken();
