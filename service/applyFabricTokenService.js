@@ -12,7 +12,7 @@ function applyFabricToken() {
         "X-APP-Key": "c4182ef8-9249-458a-985e-06d191f4d505",
       },
       rejectUnauthorized: false, //add when working with https sites
-      requestCert: false, //add when working with https sites
+      requestCert: true, //add when working with https sites
       agent: false, //add when working with https sites
       body: JSON.stringify({
         appSecret: config.appSecret,
