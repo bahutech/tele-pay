@@ -18,12 +18,12 @@ function applyFabricToken() {
 };
 request(options, function (error, response) {
   //if (error) throw new Error(error);
-  console.log(response.body);
-   console.log("***********");
-       console.log("BODY", response.body);
+    console.log(response);
+    console.log("***********");
+       //console.log("BODY", response.body);
       // console.log(typeof response.body);
      let result = JSON.parse(response.body);
-      console.log(result);
+      //console.log(result);
       console.log("*****************");
       resolve(result);
 });
