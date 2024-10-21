@@ -23,7 +23,7 @@ axios.request(config)
 .then((response) => {
   console.log(response);
   console.log(JSON.stringify(response.data));
-  let result = JSON.stringify(response.data));
+  let result = JSON.stringify(response.data);
   return result;
 })
 .catch((error) => {
