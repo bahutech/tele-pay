@@ -5,6 +5,7 @@ var request = require("request");
 const https = require("http");
 
 exports.authToken = async (req, res) => {
+  console.log("AM AT authToken ");
   let appToken = req.body.authToken;
   console.log("token = ", appToken);
 
