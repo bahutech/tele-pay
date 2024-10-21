@@ -11,6 +11,7 @@ function applyFabricToken() {
     'X-APP-Key': 'c4182ef8-9249-458a-985e-06d191f4d505',
     'Content-Type': 'application/json'
   },
+  'mode': 'cors',
   body: JSON.stringify({
     "appSecret": "fad0f06383c6297f545876694b974599"
   })
