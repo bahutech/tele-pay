@@ -1,34 +1,32 @@
 const config = require("../config/config");
 var request = require("request");
+const axios = require('axios');
 
 function applyFabricToken() {
   console.log("AM AT applyFabricToken");
-  return new Promise((resolve, reject) => {
-    var options = {
-  'method': 'POST',
-  'url': 'https://196.188.120.3:38443/apiaccess/payment/gateway/payment/v1/token',
-  'headers': {
-    'X-APP-Key': 'c4182ef8-9249-458a-985e-06d191f4d505',
+  let data = JSON.stringify({
+  "appSecret": "fad0f06383c6297f545876694b974599"
+});
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://196.188.120.3:38443/apiaccess/payment/gateway/payment/v1/token',
+  headers: { 
+    'X-APP-Key': 'c4182ef8-9249-458a-985e-06d191f4d505', 
     'Content-Type': 'application/json'
   },
-  'mode': 'no-cors',
-  body: JSON.stringify({
-    "appSecret": "fad0f06383c6297f545876694b974599"
-  })
-
+  data : data
 };
-request(options, function (error, response) {
-  //if (error) throw new Error(error);
-    console.log(response);
-    console.log("***********");
-       //console.log("BODY", response.body);
-      // console.log(typeof response.body);
-     //let result = JSON.parse(response.body);
-      //console.log(result);
-      //console.log("*****************");
-      resolve(response);
+
+axios.request(config)
+.then((response) => {
+  console.log(response);
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
 });
-  });
 }
 
 module.exports = applyFabricToken;
