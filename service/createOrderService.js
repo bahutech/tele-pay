@@ -26,6 +26,7 @@ exports.createOrder = async (req, res) => {
 };
 
 exports.requestCreateOrder = async (fabricToken, title, amount) => {
+  console.log("AM AT requestCreateOrder");
   try {
     const reqObject = createRequestObject(title, amount);
     console.log(reqObject);
@@ -51,6 +52,7 @@ exports.requestCreateOrder = async (fabricToken, title, amount) => {
 };
 
 function createRequestObject(title, amount) {
+  console.log("AM AT createRequestObject");
   let req = {
     timestamp: tools.createTimeStamp(),
     nonce_str: tools.createNonceStr(),
@@ -85,6 +87,7 @@ function createMerchantOrderId() {
 }
 
 function createRawRequest(prepayId) {
+  console.log("AM AT createRawRequest");
   let map = {
     appid: config.merchantAppId,
     merch_code: config.merchantCode,
