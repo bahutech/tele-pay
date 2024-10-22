@@ -13,7 +13,7 @@ function applyFabricToken() {
         "Content-Type": "application/json",
         "X-APP-Key": config.fabricAppId,
       },
-      rejectUnauthorized: true, //add when working with https sites
+      rejectUnauthorized: false, //add when working with https sites
       requestCert: false, //add when working with https sites
        httpsAgent: new https.Agent({
         rejectUnauthorized: false
