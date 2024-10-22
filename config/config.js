@@ -1,7 +1,7 @@
 // Set your own secrates here!
 // TestBed
 module.exports = {
-  baseUrl: "https://developerportal.ethiotelebirr.et:38443/apiaccess/payment/gateway",
+  baseUrl: "https://196.188.120.3:38443/apiaccess/payment/gateway",
   //baseUrl: "https://196.188.120.3:38443/apiaccess/payment/gateway",
   webBaseUrl:
     "https://developerportal.ethiotelebirr.et:38443/payment/web/paygate?",
