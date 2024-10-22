@@ -1,4 +1,5 @@
-const https = require("http");
+//const https = require("http");
+const https = require('https');
 const config = require("../config/config");
 var request = require("request");
 
@@ -14,7 +15,9 @@ function applyFabricToken() {
       },
       rejectUnauthorized: false, //add when working with https sites
       requestCert: true, //add when working with https sites
-      agent: httpsAgent, //add when working with https sites
+      httpsAgent: new https.Agent({
+        rejectUnauthorized: false
+      }), //add when working with https sites
       body: JSON.stringify({
         appSecret: config.appSecret,
       }),
