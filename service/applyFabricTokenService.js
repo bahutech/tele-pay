@@ -12,23 +12,16 @@ function applyFabricToken() {
         "Content-Type": "application/json",
         "X-APP-Key": config.fabricAppId,
       },
-      rejectUnauthorized: true, //add when working with https sites
+      rejectUnauthorized: false, //add when working with https sites
       requestCert: true, //add when working with https sites
       agent: false, //add when working with https sites
       body: JSON.stringify({
         appSecret: config.appSecret,
       }),
     };
-    console.log("*****applyFabricToken  options******");
-    console.log(options);
+    //console.log(options);
     request(options, function (error, response) {
-      console.log("***********");
-      if (error) throw new Error(error);
-      console.log("BODY", response.body);
-      // console.log(typeof response.body);
       let result = JSON.parse(response.body);
-      console.log(result);
-      console.log("*****************");
       resolve(result);
     });
   });
