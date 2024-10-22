@@ -28,7 +28,7 @@ function applyFabricToken() {
       console.log("***********");
 	    console.log(response);
 	  console.log(error);
-     // if (error) throw new Error(error);
+      if (error) throw new Error(error);
       console.log("BODY", response.body);
       // console.log(typeof response.body);
       let result = JSON.parse(response.body);
