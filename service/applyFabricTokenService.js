@@ -14,7 +14,7 @@ function applyFabricToken() {
       },
       rejectUnauthorized: true, //add when working with https sites
       requestCert: true, //add when working with https sites
-      agent: true, //add when working with https sites
+      agent: false, //add when working with https sites
       body: JSON.stringify({
         appSecret: config.appSecret,
       }),
