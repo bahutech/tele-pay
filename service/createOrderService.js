@@ -9,6 +9,9 @@ exports.createOrder = async (req, res) => {
   console.log("AM AT createOrder");
   let title = req.body.title;
   let amount = req.body.amount;
+  //bahu added
+  let reqObjectBahu = createRequestObject("test", "400");
+  console.log("reqObjectBahu =", reqObjectBahu);
   let applyFabricTokenResult = await applyFabricToken();
   let fabricToken = applyFabricTokenResult.token;
   console.log("fabricToken =", fabricToken);
