@@ -13,9 +13,10 @@ function applyFabricToken() {
         "Content-Type": "application/json",
         "X-APP-Key": config.fabricAppId,
       },
-      rejectUnauthorized: false, //add when working with https sites
-      requestCert: false, //add when working with https sites
+      //rejectUnauthorized: false, //add when working with https sites
+       //add when working with https sites
        httpsAgent: new https.Agent({
+	requestCert: false,
         rejectUnauthorized: false
       }), //add when working with https sites
       body: JSON.stringify({
@@ -24,16 +25,8 @@ function applyFabricToken() {
     };
     console.log("*****applyFabricToken  options******");
     console.log(options);
-    request(options, function (error, response) {
-      console.log("***********");
-	    console.log(response);
-	  console.log(error);
-      if (error) throw new Error(error);
-      console.log("BODY", response.body);
-      // console.log(typeof response.body);
+   request(options, function (error, response) {
       let result = JSON.parse(response.body);
-      console.log(result);
-      console.log("*****************");
       resolve(result);
     });
   });
