@@ -16,6 +16,8 @@ function applyFabricToken() {
       //rejectUnauthorized: false, //add when working with https sites
        //add when working with https sites
        httpsAgent: new https.Agent({
+	strictSSL: false,
+	verifySSLCertificate: false,
 	requestCert: false,
         rejectUnauthorized: false
       }), //add when working with https sites
