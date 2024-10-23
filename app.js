@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Allow cross-origin
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://172.20.10.7:8080");
+  res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
     "Authorization,X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method"
